@@ -30,14 +30,14 @@
       "> 1%",
       "maintained node versions",
       "not dead",
-      "ie 8-11"
+      "ie 10-11"
     ],
     "development": [
       "last 10 version",
       "> 1%",
       "maintained node versions",
       "not dead",
-      "ie 8-11"
+      "ie 10-11"
     ]
   }
 }

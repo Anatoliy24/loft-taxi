@@ -3,7 +3,7 @@ import {Typography, Button, Paper} from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 
 
-function RegistrationForm() {
+function RegistrationForm({onSubmit, handleAuthForm}) {
 
     return (
         <Paper
@@ -35,13 +35,14 @@ function RegistrationForm() {
                     fullWidth={true}
                     className='button'
                     type='submit'
-                    // onSubmit={}
+                    onClick={() => onSubmit('main')}
+
                 >
                     Зарегистрироваться
                 </Button>
                 <div className="links">
                     <a href="#" className='link link-gray'>Уже зарегестрированны? </a>
-                    <a href="#"  className='link link-yellow'>Войти </a>
+                    <a href="#" onClick={handleAuthForm} className='link link-yellow'>Войти </a>
                 </div>
             </form>
         </Paper>

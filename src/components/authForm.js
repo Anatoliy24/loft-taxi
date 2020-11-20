@@ -3,7 +3,7 @@ import {Typography, Button, Paper} from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 
 
-function AuthForm({onSubmit}) {
+function AuthForm({onSubmit, handleRegForm}) {
     return (
         <Paper
             elevation={3}
@@ -36,7 +36,7 @@ function AuthForm({onSubmit}) {
                     </Button>
                     <div className="links">
                         <a href="#" className='link link-gray'>Новый пользователь? </a>
-                        <a href="#" className='link link-yellow'>Регистрация</a>
+                        <a href="#" onClick={handleRegForm} className='link link-yellow'>Регистрация</a>
                     </div>
                 </form>
         </Paper>
