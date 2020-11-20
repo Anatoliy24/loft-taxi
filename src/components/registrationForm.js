@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 
 
 function RegistrationForm() {
-    // state={}
+
     return (
         <Paper
             elevation={3}
@@ -41,7 +41,7 @@ function RegistrationForm() {
                 </Button>
                 <div className="links">
                     <a href="#" className='link link-gray'>Уже зарегестрированны? </a>
-                    <a href="#" className='link link-yellow'>Войти </a>
+                    <a href="#"  className='link link-yellow'>Войти </a>
                 </div>
             </form>
         </Paper>

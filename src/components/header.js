@@ -1,6 +1,7 @@
 import React from 'react';
 
-function Header() {
+function Header({onNavigate}) {
+
     return (
         <header className="header">
             <svg width="272" height="61" className='header-logo' viewBox="0 0 272 61" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -19,13 +20,13 @@ function Header() {
             </svg>
             <ul className="header-menu">
                <li className="menu-item">
-                   <a href="#" className='menu-link'>Карта</a>
+                   <a href="#" onClick={() => onNavigate('main')} className='menu-link'>Карта</a>
                </li>
                <li className="menu-item">
-                   <a href="#" className='menu-link'>Профиль</a>
+                   <a href="#" onClick={() => onNavigate('profile')}  className='menu-link'>Профиль</a>
                </li>
                <li className="menu-item">
-                   <a href="#" className='menu-link'>Выйти</a>
+                   <a href="#" onClick={() => onNavigate('login')}  className='menu-link'>Выйти</a>
                </li>
             </ul>
 

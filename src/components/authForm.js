@@ -3,7 +3,7 @@ import {Typography, Button, Paper} from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 
 
-function AuthForm() {
+function AuthForm({onSubmit}) {
     return (
         <Paper
             elevation={3}
@@ -30,6 +30,7 @@ function AuthForm() {
                         variant="contained"
                         fullWidth={true}
                         className='button'
+                        onClick={() => onSubmit('main')}
                     >
                         Войти
                     </Button>
