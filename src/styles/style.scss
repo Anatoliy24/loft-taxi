@@ -1,0 +1,202 @@
+@import 'adjustment';
+
+.form-block{
+  width: 580px;
+  padding: 56px 112px;
+  border-radius: 20px;
+}
+
+.form-select{
+  width: 486px;
+  //padding: 56px 112px;
+  border-radius: 20px;
+  position: absolute;
+  top: 56px;
+  left: 68px;
+  box-shadow: none;
+
+  
+}
+.form-select--auto{
+  width: 486px;
+  padding: 32px 46px;
+  border-radius: 20px;
+}
+
+
+
+.login-page{
+  height: 100vh;
+  display: flex;
+}
+.login-page__left{
+  @include width-flex(34%)
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1C1A19;
+}
+.img-logo_big{
+  //width: 196px;
+  //height: 228px;
+}
+
+.login-page__right{
+  @include width-flex(66%)
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include background-cover('map.jpg')
+}
+
+.form{
+  width: 100%;
+}
+
+
+.form-title{
+  font-size: 1.65rem;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 2.75rem;
+}
+
+.input{
+  width: 100%;
+
+  margin-bottom: 30px;
+  .MuiInputLabel-shrink{
+    font-family: $RobotoBold;
+    font-size: 19px;
+    color: #000;
+  }
+  .MuiInput-underline:after{
+    border-bottom-color: #000000;
+  }
+  .MuiInput-underline:before{
+    border-bottom: 2px solid #E4E4E4;
+  }
+}
+.inputs{
+  margin-bottom: 78px;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link-gray{
+  color: #828282;
+}
+.link-yellow{
+  color: $color-orange
+}
+
+.links{
+  margin-top: 33px;
+  text-align: center;
+}
+
+
+.input-wrap{
+  position: relative;
+  &:last-child{
+    .input{
+      margin-bottom: 0px;
+    }
+  }
+  .link{
+    position: absolute;
+    bottom: -25px;
+    right: 0;
+    left: auto;
+  }
+}
+
+
+
+
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 21px 50px 21px 27px;
+  width: 100%;
+  background: #1C1A19;
+}
+.header-menu{
+  display: flex;
+  align-items: center;
+}
+.menu-link{
+  font-size: 21px;
+  text-decoration: none;
+  color: $color-white;
+  &:hover{
+    color: $color-orange;
+  }
+}
+
+.menu-item{
+  margin-right: 40px;
+  @include last-mr-0
+}
+
+.button{
+  background: #FDBF5A;
+  border-radius: 70px;
+  box-shadow: none;
+  height: 61px;
+  color: #000000;
+  text-transform: none;
+  font-size: 25px;
+  &:hover{
+    background: #FDBF5A;
+
+  }
+}
+
+.main{
+  position: relative;
+  height: calc(100vh - 103px);
+}
+
+.map{
+  @include background-cover('map.jpg')
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.select{
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.formControl{
+  width: 100%;
+  .MuiInput-underline:before{
+    border-bottom: 1px solid #E0E0E0;
+
+  }
+  &:last-child{
+    .MuiInput-underline:before{
+      border-bottom: none;
+    }
+  }
+}
+.selects{
+  padding: 20px 20px 0 20px;
+  border-bottom: 1px solid #E0E0E0;
+  margin-bottom: 50px;
+}
+
+
+
+
+@import 'media';
