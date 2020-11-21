@@ -24,7 +24,7 @@ function RegistrationForm({onSubmit, handleAuthForm}) {
                             id="standard-basic"
                             label="Придумайте пароль*"
                             className='input'
-                            type={'password'}
+                            type='password'
                         />
 
                     </div>

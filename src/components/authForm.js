@@ -20,7 +20,7 @@ function AuthForm({onSubmit, handleRegForm}) {
                                 id="standard-basic"
                                 label="Пароль"
                                 className='input'
-                                type={'password'}
+                                type='password'
                             />
                             <a href="#" className='link link-gray'>Забыли пароль?</a>
                         </div>

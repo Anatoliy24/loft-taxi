@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
+
 import {Select, Button, Paper, MenuItem, InputLabel, FormControl} from '@material-ui/core';
 
 
 function SelectForm() {
-    const [age, setAge] = React.useState('');
-    const [open, setOpen] = React.useState(false);
+    const [age, setAge] = useState('');
+    const [open, setOpen] = useState(false);
 
     const handleChange = (event) => {
         setAge(event.target.value);
