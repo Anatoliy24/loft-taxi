@@ -1,0 +1,32 @@
+@media (min-width: 320px) and (max-width: 1200px) {
+  .container {
+    max-width: 100%;
+
+  }
+
+
+}
+
+
+@media screen and (max-width: 1200px) {
+
+  html {
+    //font-size: 14px;
+  }
+
+
+}
+
+@media screen and (max-width: 1024px) {
+  html {
+    //font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  html {
+    font-size: 16px;
+  }
+
+}
+
