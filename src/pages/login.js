@@ -13,6 +13,11 @@ function Login({onSubmit}) {
     const handleRegForm = () => {
         setAuthForm('regForm');
     };
+    const forms = {
+        loginForm: <AuthForm onSubmit={onSubmit} handleRegForm={handleRegForm}/>,
+        regForm: <RegistrationForm onSubmit={onSubmit} handleAuthForm={handleAuthForm}/>
+    }
+
 
 
     return (
@@ -21,11 +26,8 @@ function Login({onSubmit}) {
                 <LogoBig/>
             </div>
             <div className="login-page__right">
-                {authForm == 'loginForm'
-                    ?
-                    <AuthForm onSubmit={onSubmit} handleRegForm={handleRegForm}/>
-                    :
-                    <RegistrationForm onSubmit={onSubmit} handleAuthForm={handleAuthForm}/>
+                {
+                    forms[authForm]
                 }
             </div>
         </div>

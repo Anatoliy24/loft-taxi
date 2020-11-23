@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+
 import './styles/style.scss';
 import {StylesProvider} from '@material-ui/core/styles';
 import Main from "./pages/main";
@@ -9,25 +10,22 @@ import Profile from "./pages/profile";
 
 
 function App() {
-    const [page, setPage] = React.useState('login');
+    const [page, setPage] = useState('login');
     const header = <Header onNavigate={(pageName) => setPage(pageName)}/>
     const pages = {
         login: <Login onSubmit={(pageName) => setPage(pageName)}/>,
-        main:<Main/>,
+        main: <Main/>,
         profile: <Profile/>
 
     };
     return (
         <StylesProvider injectFirst>
 
-            {page !== 'login'
-                ?
+            {page !== 'login' && (
                 <div>
                     {header}
                 </div>
-                :
-                null
-            }
+            )}
             {
                 pages[page]
             }
