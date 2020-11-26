@@ -1,9 +1,21 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Typography, Button, Paper} from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
+import PropTypes from 'prop-types'
+import {AuthContext} from "../context";
 
 
-function AuthForm({onSubmit, handleRegForm}) {
+
+AuthForm.propTypes ={
+    email: PropTypes.string.isRequired,
+    password: PropTypes.any.isRequired
+}
+
+
+
+function AuthForm({handleRegForm}, props) {
+    const {onSubmitLogin} = useContext(AuthContext);
+
     return (
         <Paper
             elevation={3}
@@ -13,7 +25,12 @@ function AuthForm({onSubmit, handleRegForm}) {
                 <form noValidate autoComplete="off" className='form'>
                     <div className="inputs">
                         <div className="input-wrap">
-                            <TextField id="standard-basic" label="Email" className='input'/>
+                            <TextField
+                                id="standard-basic"
+                                label="Email"
+                                className='input'
+                                value={props.email}
+                            />
                         </div>
                         <div className="input-wrap">
                             <TextField
@@ -21,6 +38,9 @@ function AuthForm({onSubmit, handleRegForm}) {
                                 label="Пароль"
                                 className='input'
                                 type='password'
+                                value={props.password}
+
+
                             />
                             <a href="#" className='link link-gray'>Забыли пароль?</a>
                         </div>
@@ -30,7 +50,7 @@ function AuthForm({onSubmit, handleRegForm}) {
                         variant="contained"
                         fullWidth={true}
                         className='button'
-                        onClick={() => onSubmit('main')}
+                        onClick={() => onSubmitLogin()}
                     >
                         Войти
                     </Button>
@@ -42,5 +62,6 @@ function AuthForm({onSubmit, handleRegForm}) {
         </Paper>
     );
 }
+
 
 export default AuthForm;

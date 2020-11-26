@@ -5,7 +5,7 @@ import LogoBig from "../components/svg/logoBig";
 
 
 
-function Login({onSubmit}) {
+function Login() {
     const [authForm, setAuthForm] = useState('loginForm');
     const handleAuthForm = () => {
         setAuthForm('loginForm');
@@ -14,8 +14,8 @@ function Login({onSubmit}) {
         setAuthForm('regForm');
     };
     const forms = {
-        loginForm: <AuthForm onSubmit={onSubmit} handleRegForm={handleRegForm}/>,
-        regForm: <RegistrationForm onSubmit={onSubmit} handleAuthForm={handleAuthForm}/>
+        loginForm: <AuthForm  handleRegForm={handleRegForm} email={''} password={''}/>,
+        regForm: <RegistrationForm  handleAuthForm={handleAuthForm} email={''} password={''} name={''}/>
     }
 
 
