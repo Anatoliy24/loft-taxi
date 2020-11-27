@@ -4,13 +4,13 @@ import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types'
 
 RegistrationForm.propTypes ={
-    email: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    password: PropTypes.any.isRequired
+    email: PropTypes.string,
+    name: PropTypes.string,
+    password: PropTypes.string
 }
 
 
-function RegistrationForm({handleAuthForm}, props) {
+function RegistrationForm(props) {
 
     return (
         <Paper
@@ -53,14 +53,12 @@ function RegistrationForm({handleAuthForm}, props) {
                     fullWidth={true}
                     className='button'
                     type='submit'
-                    // onClick={() => onSubmit('main')}
-
                 >
                     Зарегистрироваться
                 </Button>
                 <div className="links">
                     <a href="#" className='link link-gray'>Уже зарегестрированны? </a>
-                    <a href="#" onClick={handleAuthForm} className='link link-yellow'>Войти </a>
+                    <a href="#" onClick={props.handleAuthForm} className='link link-yellow'>Войти </a>
                 </div>
             </form>
         </Paper>

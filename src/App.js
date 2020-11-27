@@ -1,11 +1,14 @@
 import React, {useState} from 'react';
 import './styles/style.scss';
 import {StylesProvider} from '@material-ui/core/styles';
-import Main from "./pages/main";
+import Main from "./pages/Main";
 import Header from "./components/header";
-import Login from "./pages/login";
-import Profile from "./pages/profile";
+import Login from "./pages/Login";
+import Profile from "./pages/Profile";
 import {AuthContext} from "./context";
+
+const emailDefault = 'myemail@email'
+const passwordDefault = '123'
 
 
 function App() {
@@ -21,9 +24,12 @@ function App() {
         profile: <Profile/>
 
     };
-    const onSubmitLogin = () => {
-        setIsLoggedIn(true);
-        setPage('main')
+    const onSubmitLogin = (email, password) => {
+        if(email == emailDefault && password == passwordDefault){
+            setIsLoggedIn(true);
+            setPage('main')
+        }
+
     };
     const onSubmitLogout = () => {
         setIsLoggedIn(false);

@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {Typography, Button, Paper} from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types'
@@ -7,14 +7,21 @@ import {AuthContext} from "../context";
 
 
 AuthForm.propTypes ={
-    email: PropTypes.string.isRequired,
-    password: PropTypes.any.isRequired
+    email: PropTypes.string,
+    password: PropTypes.string
 }
 
 
 
-function AuthForm({handleRegForm}, props) {
+
+function AuthForm(props) {
+    const [email, setEmail] = useState(props.email || '')
+    const [password, setPassword] = useState(props.password || '')
     const {onSubmitLogin} = useContext(AuthContext);
+    const onSubmit = (e) =>{
+        e.preventDefault();
+        onSubmitLogin(email, password)
+    }
 
     return (
         <Paper
@@ -22,14 +29,15 @@ function AuthForm({handleRegForm}, props) {
             className="form-block"
         >
                 <Typography variant="h4"  className='form-title'>Войти</Typography>
-                <form noValidate autoComplete="off" className='form'>
+                <form onSubmit={onSubmit} noValidate autoComplete="off" className='form'>
                     <div className="inputs">
                         <div className="input-wrap">
                             <TextField
                                 id="standard-basic"
                                 label="Email"
                                 className='input'
-                                value={props.email}
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                         <div className="input-wrap">
@@ -38,9 +46,8 @@ function AuthForm({handleRegForm}, props) {
                                 label="Пароль"
                                 className='input'
                                 type='password'
-                                value={props.password}
-
-
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                             <a href="#" className='link link-gray'>Забыли пароль?</a>
                         </div>
@@ -50,13 +57,14 @@ function AuthForm({handleRegForm}, props) {
                         variant="contained"
                         fullWidth={true}
                         className='button'
-                        onClick={() => onSubmitLogin()}
+                        type='submit'
+
                     >
                         Войти
                     </Button>
                     <div className="links">
                         <a href="#" className='link link-gray'>Новый пользователь? </a>
-                        <a href="#" onClick={handleRegForm} className='link link-yellow'>Регистрация</a>
+                        <a href="#" onClick={props.handleRegForm} className='link link-yellow'>Регистрация</a>
                     </div>
                 </form>
         </Paper>

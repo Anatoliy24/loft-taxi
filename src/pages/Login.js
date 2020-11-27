@@ -14,11 +14,9 @@ function Login() {
         setAuthForm('regForm');
     };
     const forms = {
-        loginForm: <AuthForm  handleRegForm={handleRegForm} email={''} password={''}/>,
-        regForm: <RegistrationForm  handleAuthForm={handleAuthForm} email={''} password={''} name={''}/>
+        loginForm: <AuthForm  handleRegForm={handleRegForm}/>,
+        regForm: <RegistrationForm  handleAuthForm={handleAuthForm}/>
     }
-
-
 
     return (
         <div className="login-page">
