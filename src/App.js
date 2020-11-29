@@ -7,7 +7,7 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import {AuthContext} from "./context";
 
-const emailDefault = 'myemail@email'
+const emailDefault = 'myemail@email';
 const passwordDefault = '123'
 
 
@@ -24,13 +24,15 @@ function App() {
         profile: <Profile/>
 
     };
-    const onSubmitLogin = (email, password) => {
+    const onSubmitLogin = (email, password, messageErrorChange) => {
         if(email == emailDefault && password == passwordDefault){
             setIsLoggedIn(true);
             setPage('main')
+        }else{
+            messageErrorChange()
         }
-
     };
+
     const onSubmitLogout = () => {
         setIsLoggedIn(false);
         setPage('login')

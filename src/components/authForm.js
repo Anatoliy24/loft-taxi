@@ -11,16 +11,17 @@ AuthForm.propTypes ={
     password: PropTypes.string
 }
 
-
-
-
 function AuthForm(props) {
     const [email, setEmail] = useState(props.email || '')
     const [password, setPassword] = useState(props.password || '')
+    const [messageError, setMessageError] = useState(false)
     const {onSubmitLogin} = useContext(AuthContext);
     const onSubmit = (e) =>{
         e.preventDefault();
-        onSubmitLogin(email, password)
+        onSubmitLogin(email, password, messageErrorChange)
+    }
+    const messageErrorChange = () =>{
+        setMessageError(true)
     }
 
     return (
@@ -49,6 +50,12 @@ function AuthForm(props) {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
+                            {messageError
+                                ?
+                                <div className="message-error">Вы ввели некорректный e-mail или пароль</div>
+                                :
+                                null
+                            }
                             <a href="#" className='link link-gray'>Забыли пароль?</a>
                         </div>
 

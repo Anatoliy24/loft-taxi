@@ -26,8 +26,6 @@ function SelectForm() {
 
 
             <form data-testid='select' noValidate autoComplete="off" className='form'>
-                <label htmlFor='1' >Label</label>
-                <input type='text' name='1'></input>
                 <div className="selects">
                     <FormControl className='formControl'>
                         <InputLabel  id="demo-mutiple-name-label-1">Откуда</InputLabel>
