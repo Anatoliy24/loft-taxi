@@ -1,11 +1,12 @@
 import React from 'react';
 import SelectForm from "../components/selectForm";
+import Map from "../components/map";
 
 
 function Main() {
     return (
         <div className="main">
-            <div className="map"></div>
+            <Map/>
             <SelectForm/>
         </div>
     );

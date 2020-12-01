@@ -1,9 +1,16 @@
 import React from 'react';
 import {Typography, Button, Paper} from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
+import PropTypes from 'prop-types'
+
+RegistrationForm.propTypes ={
+    email: PropTypes.string,
+    name: PropTypes.string,
+    password: PropTypes.string
+}
 
 
-function RegistrationForm({onSubmit, handleAuthForm}) {
+function RegistrationForm(props) {
 
     return (
         <Paper
@@ -14,10 +21,20 @@ function RegistrationForm({onSubmit, handleAuthForm}) {
             <form noValidate autoComplete="off" className='form'>
                 <div className="inputs">
                     <div className="input-wrap">
-                        <TextField id="standard-basic" label="Email*" className='input'/>
+                        <TextField
+                            id="standard-basic"
+                            label="Email*"
+                            className='input'
+                            value={props.email}
+                        />
                     </div>
                     <div className="input-wrap">
-                        <TextField id="standard-basic" label="Как вас зовут?*" className='input'/>
+                        <TextField
+                            id="standard-basic"
+                            label="Как вас зовут?*"
+                            className='input'
+                            value={props.name}
+                        />
                     </div>
                     <div className="input-wrap">
                         <TextField
@@ -25,6 +42,7 @@ function RegistrationForm({onSubmit, handleAuthForm}) {
                             label="Придумайте пароль*"
                             className='input'
                             type='password'
+                            value={props.password}
                         />
 
                     </div>
@@ -35,14 +53,12 @@ function RegistrationForm({onSubmit, handleAuthForm}) {
                     fullWidth={true}
                     className='button'
                     type='submit'
-                    onClick={() => onSubmit('main')}
-
                 >
                     Зарегистрироваться
                 </Button>
                 <div className="links">
                     <a href="#" className='link link-gray'>Уже зарегестрированны? </a>
-                    <a href="#" onClick={handleAuthForm} className='link link-yellow'>Войти </a>
+                    <a href="#" onClick={props.handleAuthForm} className='link link-yellow'>Войти </a>
                 </div>
             </form>
         </Paper>

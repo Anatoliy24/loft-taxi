@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import LogoSmall from "./svg/logoSmall";
+import {AuthContext} from "../context";
 
 function Header({onNavigate}) {
+    const {onSubmitLogout} = useContext(AuthContext);
 
     return (
         <header className="header">
@@ -14,7 +16,7 @@ function Header({onNavigate}) {
                    <a href="#" onClick={() => onNavigate('profile')}  className='menu-link'>Профиль</a>
                </li>
                <li className="menu-item">
-                   <a href="#" onClick={() => onNavigate('login')}  className='menu-link'>Выйти</a>
+                   <a href="#" onClick={() => onSubmitLogout()}  className='menu-link'>Выйти</a>
                </li>
             </ul>
         </header>

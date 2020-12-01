@@ -25,10 +25,10 @@ function SelectForm() {
         >
 
 
-            <form noValidate autoComplete="off" className='form'>
+            <form data-testid='select' noValidate autoComplete="off" className='form'>
                 <div className="selects">
                     <FormControl className='formControl'>
-                        <InputLabel id="demo-mutiple-name-label-1">Откуда</InputLabel>
+                        <InputLabel  id="demo-mutiple-name-label-1">Откуда</InputLabel>
                         <Select
                             labelId="demo-controlled-open-select-label-1"
                             id="demo-controlled-open-select-1"
@@ -55,8 +55,6 @@ function SelectForm() {
                             value={age}
                             onChange={handleChange}
                             className='select'
-
-
                         >
                             <MenuItem value={0}>Лесная поляна 34, п.8</MenuItem>
                             <MenuItem value={0}>Лесная поляна 35, п.8</MenuItem>
