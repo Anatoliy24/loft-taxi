@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Typography, Button, Paper} from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types'
+import {Link} from "react-router-dom";
+import {fetchRegRequest} from "../actions/actionAuth";
+import {useDispatch} from "react-redux";
 
 RegistrationForm.propTypes ={
     email: PropTypes.string,
@@ -11,21 +14,31 @@ RegistrationForm.propTypes ={
 
 
 function RegistrationForm(props) {
-
+    const [email, setEmail] = useState('')
+    const [name, setName] = useState('')
+    const [surName, setSurName] = useState('')
+    const [password, setPassword] = useState('')
+    const dispatch = useDispatch();
+    const onSubmit = (e) =>{
+        e.preventDefault();
+        dispatch(fetchRegRequest({email, password, name, surName}))
+    }
     return (
         <Paper
             elevation={3}
             className="form-block"
         >
             <Typography variant="h4" className='form-title'>Регистрация</Typography>
-            <form noValidate autoComplete="off" className='form'>
+            <form onSubmit={onSubmit} noValidate autoComplete="osdfsdff" className='form'>
                 <div className="inputs">
                     <div className="input-wrap">
                         <TextField
                             id="standard-basic"
                             label="Email*"
                             className='input'
-                            value={props.email}
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+
                         />
                     </div>
                     <div className="input-wrap">
@@ -33,7 +46,19 @@ function RegistrationForm(props) {
                             id="standard-basic"
                             label="Как вас зовут?*"
                             className='input'
-                            value={props.name}
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+
+                        />
+                    </div>
+                    <div className="input-wrap">
+                        <TextField
+                            id="standard-basic"
+                            label="Как ваша фамилия?*"
+                            className='input'
+                            value={surName}
+                            onChange={(e) => setSurName(e.target.value)}
+
                         />
                     </div>
                     <div className="input-wrap">
@@ -42,7 +67,9 @@ function RegistrationForm(props) {
                             label="Придумайте пароль*"
                             className='input'
                             type='password'
-                            value={props.password}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+
                         />
 
                     </div>
@@ -58,7 +85,7 @@ function RegistrationForm(props) {
                 </Button>
                 <div className="links">
                     <a href="#" className='link link-gray'>Уже зарегестрированны? </a>
-                    <a href="#" onClick={props.handleAuthForm} className='link link-yellow'>Войти </a>
+                    <Link className='link link-yellow' to='/login'>Войти</Link>
                 </div>
             </form>
         </Paper>

@@ -23,8 +23,6 @@ function SelectForm() {
             elevation={3}
             className="form-select"
         >
-
-
             <form data-testid='select' noValidate autoComplete="off" className='form'>
                 <div className="selects">
                     <FormControl className='formControl'>
