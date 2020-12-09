@@ -10,35 +10,30 @@ import {
 } from '../actions/actionAuth';
 
 const initialState = {
-    isLoggedIn: false,
-    // email: '',
-    // password: '',
+    isLoggedIn: JSON.parse(localStorage.getItem('isLoggedIn')),
     messageError:false,
     isFetching: false,
     isFetched: false,
     error:''
 }
-// const emailDefault = 'myemail@email';
-// const passwordDefault = '123';
+
 
 export default function authReducer(state = initialState, action) {
     const reducers = {
-        // [GET_LOGGED_IN]: (payload) => {
-        //     const isLoggedIn =  payload.email == emailDefault && payload.password == passwordDefault
-        //     return {...state,  messageError: !isLoggedIn}
-        // },
 
         [GET_LOGGED_OUT]: () => {
+
             return  {...state, isLoggedIn: false, messageError: false}
         },
         [FETCH_AUTH_REQUEST]:() => {
             return {...state, isFetching: true, isFetched: false}
         },
         [FETCH_AUTH_SUCCESS]:(payload) => {
-            return {...state, isFetching: false, isLoggedIn: true, isFetched: true, token: payload}
+            return {...state, isFetching: false, isLoggedIn: true, isFetched: true, token: payload, }
         },
         [FETCH_AUTH_FAILURE]:(payload) => {
             return {...state, isFetching: true, isFetched: false,  error: payload}
+
         }
 
     }

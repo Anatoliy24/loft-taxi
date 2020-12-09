@@ -6,33 +6,20 @@ import Header from "./components/header";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import {useSelector} from 'react-redux';
-import {Switch, Route, useHistory, RouteComponent, Redirect} from 'react-router-dom';
+import {Switch, Route, useHistory} from 'react-router-dom';
 import Registration from "./pages/Registration";
+import {PrivateRouter} from "./components/privateRouter";
 
-let PrivateRouter = ({
-                         component: RouteComponent,
-                         isLoggedIn,
-                         loginPath,
-                         ...rest
-                     }) => (
-    <Route
-        {...rest}
-        render={(routeProps) =>
-            isLoggedIn ? (
-                <RouteComponent {...routeProps}/>
-            ) : (
-                <Redirect to={loginPath}/>
-            )}
-    />
-);
 
 
 function App() {
+
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn)
     const history = useHistory();
     const mounted = useRef();
+    console.log(isLoggedIn)
+
     useEffect(() => {
-        console.log('sdfsds')
         if (!mounted.current) {
             mounted.current = true;
         } else {
@@ -42,6 +29,7 @@ function App() {
                 history.push("/login");
             }
         }
+
 
     }, [isLoggedIn]);
 

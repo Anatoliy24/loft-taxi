@@ -5,21 +5,24 @@ import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux'
 import {PersistGate} from 'redux-persist/integration/react'
+import store from './store'
 
-import {getPersistor, getStore} from './store'
 
 
-const store = getStore()
-const myPersistor = getPersistor()
+// import {getPersistor, getStore} from './store'
+
+
+// const store = getStore()
+// const myPersistor = getPersistor()
 
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
-            <PersistGate loading={null} persistor={myPersistor}>
+            {/*<PersistGate loading={null} persistor={myPersistor}>*/}
                 <BrowserRouter>
                     <App/>
                 </BrowserRouter>
-            </PersistGate>
+            {/*</PersistGate>*/}
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')

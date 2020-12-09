@@ -13,6 +13,8 @@ function Header() {
     const logOut = (e) =>{
         e.preventDefault();
         dispatch({type: GET_LOGGED_OUT})
+        localStorage.setItem('isLoggedIn', 'false');
+
     }
     return (
         <header className="header">

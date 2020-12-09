@@ -22,6 +22,7 @@ function AuthForm() {
     const onSubmit = (e) =>{
         e.preventDefault();
         dispatch(fetchAuthRequest({email, password}))
+
     }
 
     return (
