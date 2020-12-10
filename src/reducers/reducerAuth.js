@@ -1,15 +1,12 @@
 import {
 
-    GET_LOGGED_IN,
     GET_LOGGED_OUT,
     FETCH_AUTH_REQUEST,
     FETCH_AUTH_SUCCESS,
     FETCH_AUTH_FAILURE
-
-
 } from '../actions/actionAuth';
 
-const initialState = {
+export const initialState = {
     isLoggedIn: JSON.parse(localStorage.getItem('isLoggedIn')),
     messageError:false,
     isFetching: false,
@@ -22,17 +19,16 @@ export default function authReducer(state = initialState, action) {
     const reducers = {
 
         [GET_LOGGED_OUT]: () => {
-
             return  {...state, isLoggedIn: false, messageError: false}
         },
         [FETCH_AUTH_REQUEST]:() => {
-            return {...state, isFetching: true, isFetched: false}
+            return {...state, isFetching: true, isFetched: false, isLoggedIn: false}
         },
         [FETCH_AUTH_SUCCESS]:(payload) => {
-            return {...state, isFetching: false, isLoggedIn: true, isFetched: true, token: payload, }
+            return {...state, isFetching: false, isLoggedIn: true, isFetched: true, token: payload }
         },
         [FETCH_AUTH_FAILURE]:(payload) => {
-            return {...state, isFetching: true, isFetched: false,  error: payload}
+            return {...state, messageError:true, isFetching: true, isFetched: false, isLoggedIn: false, error: payload}
 
         }
 
@@ -45,32 +41,3 @@ export default function authReducer(state = initialState, action) {
     return state
 }
 
-// function users(state = initialState, action) {
-//
-//     switch (action.type) {
-//         case FETCH_USERS_REQUEST:
-//             return {
-//                 ...state,
-//                 isFetching: true,
-//                 isFetched: false
-//             }
-//         case FETCH_USERS_SUCCESS:
-//             return {
-//                 ...state,
-//                 isFetched: true,
-//                 isFetching: false,
-//                 users: action.payload
-//             }
-//         case FETCH_USERS_FAILURE:
-//             return {
-//                 ...state,
-//                 isFetched: true,
-//                 isFetching: false,
-//                 error: action.error
-//             }
-//         default:
-//             return state;
-//     }
-// }
-
-// export default ( users )
