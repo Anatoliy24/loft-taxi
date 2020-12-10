@@ -1,66 +1,66 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 import './styles/style.scss';
 import {StylesProvider} from '@material-ui/core/styles';
 import Main from "./pages/Main";
 import Header from "./components/header";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
-import {AuthContext} from "./context";
+import {useSelector} from 'react-redux';
+import {Switch, Route, useHistory} from 'react-router-dom';
+import Registration from "./pages/Registration";
+import {PrivateRouter} from "./components/privateRouter";
 
-const emailDefault = 'myemail@email';
-const passwordDefault = '123'
 
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    const [page, setPage] = useState(
-        isLoggedIn ? 'main' : 'login'
-        );
-    const header = <Header onNavigate={(pageName) => setPage(pageName)}/>
-    const pages = {
-        login: <Login/>,
-        main: <Main/>,
-        profile: <Profile/>
-
-    };
-    const onSubmitLogin = (email, password, messageErrorChange) => {
-        if(email == emailDefault && password == passwordDefault){
-            setIsLoggedIn(true);
-            setPage('main')
-        }else{
-            messageErrorChange()
+    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn)
+    const history = useHistory();
+    const mounted = useRef();
+    useEffect(() => {
+        if (!mounted.current) {
+            mounted.current = true;
+        } else {
+            if (isLoggedIn) {
+                history.push("/main");
+            } else {
+                history.push("/login");
+            }
         }
-    };
 
-    const onSubmitLogout = () => {
-        setIsLoggedIn(false);
-        setPage('login')
 
-    };
+    }, [isLoggedIn]);
+
+
+    const header = <Header/>;
     return (
-        <AuthContext.Provider value={{
-            onSubmitLogin,
-            onSubmitLogout
-        }}>
-            <StylesProvider injectFirst>
+        <StylesProvider injectFirst>
 
-                {page !== 'login' && (
-                    <div>
-                        {header}
-                    </div>
-                )}
-                {
-                    !isLoggedIn
-                    ?
-                    pages.login
-                    :
-                    pages[page]
-                }
+            {isLoggedIn && (
+                <div>
+                    {header}
+                </div>
+            )}
 
+            <Switch>
+                <Route exact path='/login' component={Login}/>
+                <Route exact path='/reg' component={Registration}/>
 
-            </StylesProvider>
-        </AuthContext.Provider>
+                <PrivateRouter
+                    path='/main'
+                    component={Main}
+                    isLoggedIn={isLoggedIn}
+                    loginPath='/reg'
+                />
+                <PrivateRouter
+                    path='/profile'
+                    component={Profile}
+                    isLoggedIn={isLoggedIn}
+                    loginPath='/reg'
+                />
+
+            </Switch>
+        </StylesProvider>
     );
 
 
