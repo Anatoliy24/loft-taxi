@@ -18,16 +18,14 @@ function Profile() {
     const [dateCard, setDateCard] = useState(profile.dateCard)
     const [cvc, setCvc] = useState(profile.cvc)
 
-
-
     const onSubmitSaveData = (e) =>{
         e.preventDefault();
-
-        dispatch({type: PROFILE_DATA_SAVE, payload:{nameUser:nameUser, numberCard:numberCard, dateCard:dateCard, cvc:cvc}})
         localStorage.setItem('nameUser', profile.nameUser);
         localStorage.setItem('numberCard', profile.numberCard);
         localStorage.setItem('dateCard', profile.dateCard);
         localStorage.setItem('cvc', profile.cvc);
+        dispatch({type: PROFILE_DATA_SAVE, payload:{nameUser:nameUser, numberCard:numberCard, dateCard:dateCard, cvc:cvc}})
+
     }
 
     return (

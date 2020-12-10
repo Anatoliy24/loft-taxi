@@ -17,8 +17,6 @@ function App() {
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn)
     const history = useHistory();
     const mounted = useRef();
-    console.log(isLoggedIn)
-
     useEffect(() => {
         if (!mounted.current) {
             mounted.current = true;
@@ -48,12 +46,6 @@ function App() {
                 <Route exact path='/login' component={Login}/>
                 <Route exact path='/reg' component={Registration}/>
 
-                <PrivateRouter
-                    path='/main'
-                    component={Main}
-                    isLoggedIn={isLoggedIn}
-                    loginPath='/reg'
-                />
                 <PrivateRouter
                     path='/main'
                     component={Main}
