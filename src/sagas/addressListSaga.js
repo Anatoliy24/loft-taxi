@@ -10,10 +10,6 @@ function* handleFetchAddressSaga(action) {
         const response = yield call(api.fetchAddressList);
         yield put({type:FETCH_ADDRESS_SUCCESS, payload:response.addresses})
 
-
-        // console.log(response)
-        // console.log('action', action)
-
     }catch (error){
         console.log(error)
     }

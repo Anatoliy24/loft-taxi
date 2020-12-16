@@ -8,7 +8,6 @@ export default function addressReducer(state = initialState, action) {
     const reducers = {
         [FETCH_ADDRESS_SUCCESS]: (payload) => {
             return  {...state, addressItems:payload}
-            // console.log('payload', payload)
 
         },
     }

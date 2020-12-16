@@ -4,10 +4,7 @@ import {FETCH_REG_REQUEST, fetchRegRequest, fetchRegSuccess} from "../actions/au
 
 function* handleRegSaga(action) {
     const dataReg = {email: action.payload.email, password: action.payload.password, name: action.payload.name, surname: action.payload.surName}
-
-    // const {email, password, name, surName} = action.payload
     try {
-        // const response = yield call(api.registration, email, password, name, surName);
         const response = yield call(api.registration, dataReg);
         console.log(response)
         alert('Регистрация успешно выполнена')

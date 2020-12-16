@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import {useSelector} from "react-redux";
+import drawRoute from "./drawRoute";
 
 mapboxgl.accessToken =
     'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA';
@@ -16,7 +17,8 @@ const Map = () => {
 
 
     const coordinates = useSelector((state) => state.routingMap.coordinates)
-    console.log('coordinatesMAP', JSON.stringify(coordinates))
+    const mapRoute = useRef()
+
 
     // Initialize map when component mounts
     useEffect(() => {
@@ -26,16 +28,23 @@ const Map = () => {
             center: [lng, lat],
             zoom: zoom
         });
-        // console.log(map)
-        // console.log(coordinates)
+        mapRoute.current = map
         // Clean up on unmount
         return () => {
-
             map.remove();
         }
 
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
+    console.log('mapContainerRef', mapContainerRef)
+    //
+    useEffect(() => {
+        console.log('coordinatesArray.length', coordinates.length)
+        if (coordinates.length !== 0 ) {
+           drawRoute(mapRoute.current, coordinates)
+        }
+
+    }, [coordinates]);
 
 
     return (
@@ -45,39 +54,6 @@ const Map = () => {
     );
 
 };
-export const drawRoute = (map, coordinates) => {
-
-    map.flyTo({
-        center: coordinates[0],
-        zoom: 15
-    });
-
-
-    map.addLayer({
-        id: "route",
-        type: "line",
-        source: {
-            type: "geojson",
-            data: {
-                type: "Feature",
-                properties: {},
-                geometry: {
-                    type: "LineString",
-                    coordinates
-                }
-            }
-        },
-        layout: {
-            "line-join": "round",
-            "line-cap": "round"
-        },
-        paint: {
-            "line-color": "#ffc617",
-            "line-width": 8
-        }
-    });
-};
-
 
 
 

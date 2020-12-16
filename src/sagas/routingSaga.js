@@ -12,10 +12,6 @@ function* handleGetRoutingSaga(action) {
         const response = yield call(api.getRouting, coordinates.addressFrom, coordinates.addressTo);
         yield put({type:FETCH_ROUTING_SUCCESS, payload:response})
 
-        // console.log('coordinates', coordinates)
-        // console.log('response', response)
-        // console.log('action Router', action)
-
     }catch (error){
         console.log(error)
     }

@@ -1,8 +1,5 @@
 import {createStore, combineReducers, compose, applyMiddleware} from "redux";
 import authReducer from "./reducers/authReducer";
-import {authMiddleware} from "./middelwares/authMiddleware";
-import {regMiddleware} from "./middelwares/regMiddleware";
-import {profileMiddleware} from "./middelwares/profileMiddleware";
 import profileReducer from "./reducers/profileReducer";
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from "./sagas/rootSaga";
