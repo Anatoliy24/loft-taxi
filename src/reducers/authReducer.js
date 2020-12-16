@@ -4,14 +4,14 @@ import {
     FETCH_AUTH_REQUEST,
     FETCH_AUTH_SUCCESS,
     FETCH_AUTH_FAILURE
-} from '../actions/actionAuth';
+} from '../actions/authAction';
 
 export const initialState = {
     isLoggedIn: JSON.parse(localStorage.getItem('isLoggedIn')),
     messageError:false,
     isFetching: false,
     isFetched: false,
-    error:''
+    error:'',
 }
 
 

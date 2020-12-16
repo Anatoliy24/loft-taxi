@@ -1,7 +1,7 @@
 import {
     FETCH_REG_REQUEST
 
-} from "../actions/actionAuth";
+} from "../actions/authAction";
 
 export const regMiddleware = store => next => action => {
     const result = next(action);

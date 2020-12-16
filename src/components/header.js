@@ -2,7 +2,7 @@ import React from 'react';
 import LogoSmall from "./svg/logoSmall";
 import {Link} from 'react-router-dom';
 import {useDispatch} from 'react-redux'
-import {GET_LOGGED_OUT} from "../actions/actionAuth";
+import {GET_LOGGED_OUT} from "../actions/authAction";
 
 function Header() {
     const dispatch = useDispatch();
@@ -12,7 +12,7 @@ function Header() {
         localStorage.setItem('isLoggedIn', 'false');
         localStorage.removeItem('nameUser');
         localStorage.removeItem('numberCard');
-        localStorage.removeItem('dateCard');
+        localStorage.removeItem('expiryDate');
         localStorage.removeItem('cvc');
 
     }

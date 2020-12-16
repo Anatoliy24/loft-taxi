@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {Typography, Button, Paper} from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types'
-import {fetchAuthRequest} from "../actions/actionAuth";
+import {fetchAuthRequest} from "../actions/authAction";
 import {Link} from "react-router-dom";
 
 

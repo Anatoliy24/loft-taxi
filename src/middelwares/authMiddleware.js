@@ -2,7 +2,7 @@ import {
     FETCH_AUTH_REQUEST,
     fetchAuthFailure,
     fetchAuthSuccess,
-} from "../actions/actionAuth";
+} from "../actions/authAction";
 
 export const authMiddleware = store => next => action => {
     const result = next(action);

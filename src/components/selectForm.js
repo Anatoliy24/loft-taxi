@@ -1,45 +1,84 @@
 import React, {useState} from 'react';
 
 import {Select, Button, Paper, MenuItem, InputLabel, FormControl} from '@material-ui/core';
+import {useDispatch, useSelector} from "react-redux";
+import {FETCH_ADDRESS_REQUEST, fetchRoutingRequest} from "../actions/routeAction";
 
 
 function SelectForm() {
-    const [age, setAge] = useState('');
-    const [open, setOpen] = useState(false);
+    const [addressFrom, setAddressFrom] = useState('');
+    const [addressTo, setAddressTo] = useState('');
+    const [openFrom, setOpenFrom] = useState(false);
+    const [openTo, setOpenTo] = useState(false);
 
-    const handleChange = (event) => {
-        setAge(event.target.value);
+    const dispatch = useDispatch();
+    const addressListArray = useSelector((state) => state.addressList.addressItems )
+
+
+
+    const handleChangeFrom = (event) => {
+         setAddressFrom(event.target.value);
+
     };
 
-    const handleClose = () => {
-        setOpen(false);
+    const handleChangeTo = (event) => {
+        setAddressTo(event.target.value);
     };
 
-    const handleOpen = () => {
-        setOpen(true);
+    const handleCloseFrom = () => {
+        setOpenFrom(false);
     };
+
+    const handleCloseTo = () => {
+        setOpenTo(false);
+    };
+
+    const handleOpenFrom = () => {
+        setOpenFrom(true);
+        dispatch({type: FETCH_ADDRESS_REQUEST})
+
+
+    };
+    const handleOpenTo = () => {
+        setOpenTo(true);
+        dispatch({type: FETCH_ADDRESS_REQUEST})
+
+    };
+    const addRouting = (e) => {
+        e.preventDefault();
+        dispatch(fetchRoutingRequest({addressFrom, addressTo}))
+
+
+    };
+
+
+
+
     return (
         <Paper
             elevation={3}
             className="form-select"
         >
-            <form data-testid='select' noValidate autoComplete="off" className='form'>
+            <form data-testid='select' onSubmit={addRouting} noValidate autoComplete="off" className='form'>
                 <div className="selects">
                     <FormControl className='formControl'>
-                        <InputLabel  id="demo-mutiple-name-label-1">Откуда</InputLabel>
+                        <InputLabel id="demo-mutiple-name-label-1">Откуда</InputLabel>
                         <Select
                             labelId="demo-controlled-open-select-label-1"
                             id="demo-controlled-open-select-1"
-                            open={open}
-                            onClose={handleClose}
-                            onOpen={handleOpen}
-                            value={age}
-                            onChange={handleChange}
+                            open={openFrom}
+                            onClose={handleCloseFrom}
+                            onOpen={handleOpenFrom}
+                            value={addressFrom}
+                            onChange={handleChangeFrom}
                             className='select'
                         >
-                            <MenuItem value={0}>Лесная поляна 34, п.8</MenuItem>
-                            <MenuItem value={0}>Лесная поляна 35, п.8</MenuItem>
-                            <MenuItem value={0}>Лесная поляна 36, п.8</MenuItem>
+                            {addressListArray.filter((addressFrom) => addressFrom !== addressTo
+                            ).map((addressFrom, index) => (
+                                <MenuItem value={addressFrom} key={index}>{addressFrom}</MenuItem>
+                            ))
+                            }
+
                         </Select>
                     </FormControl>
                     <FormControl className='formControl'>
@@ -47,20 +86,22 @@ function SelectForm() {
                         <Select
                             labelId="demo-controlled-open-select-label-2"
                             id="demo-controlled-open-select-2"
-                            open={open}
-                            onClose={handleClose}
-                            onOpen={handleOpen}
-                            value={age}
-                            onChange={handleChange}
+                            open={openTo}
+                            onClose={handleCloseTo}
+                            onOpen={handleOpenTo}
+                            value={addressTo}
+                            onChange={handleChangeTo}
                             className='select'
                         >
-                            <MenuItem value={0}>Лесная поляна 34, п.8</MenuItem>
-                            <MenuItem value={0}>Лесная поляна 35, п.8</MenuItem>
-                            <MenuItem value={0}>Лесная поляна 36, п.8</MenuItem>
+
+                            {addressListArray.filter((addressTo) => addressTo !== addressFrom
+                            ).map((addressTo, index) => (
+                                <MenuItem value={addressTo} key={index}>{addressTo}</MenuItem>
+                                ))
+                            }
+
                         </Select>
                     </FormControl>
-
-
                 </div>
                 <Paper
                     elevation={3}
@@ -70,6 +111,8 @@ function SelectForm() {
                         variant="contained"
                         fullWidth={true}
                         className='button'
+                        type='submit'
+                        disabled={!addressFrom || !addressTo}
                     >
                         Заказать
                     </Button>
