@@ -1,6 +1,6 @@
 import React from 'react';
 import {PROFILE_DATA_SAVE} from "../actions/profileAction";
-import profileReducer , {initialState} from "./profileReducer";
+import profileReducer, {initialState} from "./profileReducer";
 
 
 describe('authorization', () => {
@@ -10,10 +10,9 @@ describe('authorization', () => {
             payload: {
                 nameUser: '',
                 numberCard: '',
-                expiryDate:'',
-                cvc:''
+                expiryDate: '',
+                cvc: ''
             }
-
         }
         expect(profileReducer(initialState, action)).toEqual({
             nameUser: action.payload.nameUser,
@@ -22,5 +21,4 @@ describe('authorization', () => {
             cvc: action.payload.cvc
         })
     })
-
 })

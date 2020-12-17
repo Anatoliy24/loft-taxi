@@ -11,12 +11,12 @@ import Registration from "./pages/Registration";
 import {PrivateRouter} from "./components/privateRouter";
 
 
-
 function App() {
-
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn)
     const history = useHistory();
+    const header = <Header/>;
     const mounted = useRef();
+
     useEffect(() => {
         if (!mounted.current) {
             mounted.current = true;
@@ -31,8 +31,6 @@ function App() {
 
     }, [isLoggedIn]);
 
-
-    const header = <Header/>;
     return (
         <StylesProvider injectFirst>
 

@@ -6,20 +6,16 @@ import * as api from "../api"
 function* handleAuthSaga(action) {
     try {
         const response = yield call(api.authorize, action.payload);
-        console.log(response)
-        if(response){
-            yield put({type:FETCH_AUTH_SUCCESS, payload:response.token})
+        if (response) {
+            yield put({type: FETCH_AUTH_SUCCESS, payload: response.token})
             localStorage.setItem('isLoggedIn', 'true');
             localStorage.setItem('token', response.token);
         }
 
-    }catch (error){
+    } catch (error) {
         console.log(error)
         yield put(fetchAuthFailure())
-
     }
-
-
 }
 
 export function* authorizationSaga() {

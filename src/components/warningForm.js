@@ -1,11 +1,9 @@
 import React from 'react';
-
 import {Paper} from '@material-ui/core';
 import {Link} from "react-router-dom";
 
 
 function WarningForm() {
-
     return (
         <Paper
             elevation={3}

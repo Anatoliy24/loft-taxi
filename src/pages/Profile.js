@@ -12,7 +12,6 @@ function Profile() {
     const dispatch = useDispatch();
     const profile = useSelector((state) => state.profile)
     const token = useSelector((state) => state.auth.token)
-
     const [nameUser, setNameUser] = useState(profile.nameUser)
     const [numberCard, setNumberCard] = useState(profile.numberCard)
     const [expiryDate, setExpiryDate] = useState(profile.expiryDate)

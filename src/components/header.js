@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import {useDispatch} from 'react-redux'
 import {GET_LOGGED_OUT} from "../actions/authAction";
 
+
 function Header() {
     const dispatch = useDispatch();
     const logOut = (e) =>{

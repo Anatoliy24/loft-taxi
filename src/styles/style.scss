@@ -1,26 +1,24 @@
 @import 'adjustment';
 
-.form-block{
+.form-block {
   width: 580px;
   padding: 56px 112px;
   border-radius: 20px;
 }
 
-.form-select{
+.form-select {
   width: 486px;
-  //padding: 56px 112px;
   border-radius: 20px;
   position: absolute;
   top: 56px;
   left: 68px;
   box-shadow: none;
 
-  
+
 }
 
-.form-info{
+.form-info {
   width: 486px;
-  //padding: 56px 112px;
   position: absolute;
   top: 56px;
   left: 68px;
@@ -31,34 +29,32 @@
 }
 
 
-.form-select--auto{
+.form-select--auto {
   width: 486px;
   padding: 32px 46px;
   border-radius: 20px;
 }
-.info-text{
+
+.info-text {
   font-size: 28px;
 
 }
 
 
-.login-page{
+.login-page {
   height: 100vh;
   display: flex;
 }
-.login-page__left{
+
+.login-page__left {
   @include width-flex(34%)
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #1C1A19;
 }
-.img-logo_big{
-  //width: 196px;
-  //height: 228px;
-}
 
-.login-page__right{
+.login-page__right {
   @include width-flex(66%)
 
   display: flex;
@@ -67,12 +63,12 @@
   @include background-cover('map.jpg')
 }
 
-.form{
+.form {
   width: 100%;
 }
 
 
-.form-title{
+.form-title {
   font-size: 36px;
   color: #000000;
   text-align: center;
@@ -80,23 +76,27 @@
   margin-bottom: 2.75rem;
 }
 
-.input{
+.input {
   width: 100%;
 
   margin-bottom: 30px;
-  .MuiInputLabel-shrink{
+
+  .MuiInputLabel-shrink {
     font-family: $RobotoBold;
     font-size: 19px;
     color: #000;
   }
-  .MuiInput-underline:after{
+
+  .MuiInput-underline:after {
     border-bottom-color: #000000;
   }
-  .MuiInput-underline:before{
+
+  .MuiInput-underline:before {
     border-bottom: 2px solid #E4E4E4;
   }
 }
-.inputs{
+
+.inputs {
   margin-bottom: 78px;
 }
 
@@ -104,27 +104,30 @@
   text-decoration: none;
 }
 
-.link-gray{
+.link-gray {
   color: #828282;
 }
-.link-yellow{
+
+.link-yellow {
   color: $color-orange
 }
 
-.links{
+.links {
   margin-top: 33px;
   text-align: center;
 }
 
 
-.input-wrap{
+.input-wrap {
   position: relative;
-  &:last-child{
-    .input{
+
+  &:last-child {
+    .input {
       margin-bottom: 0px;
     }
   }
-  .link{
+
+  .link {
     position: absolute;
     bottom: -25px;
     right: 0;
@@ -133,9 +136,7 @@
 }
 
 
-
-
-.header{
+.header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -143,34 +144,39 @@
   width: 100%;
   background: #1C1A19;
 }
-.header-menu{
+
+.header-menu {
   display: flex;
   align-items: center;
 }
-.menu-link{
+
+.menu-link {
   font-size: 21px;
   text-decoration: none;
   color: $color-white;
-  &:hover{
+
+  &:hover {
     color: $color-orange;
   }
 }
 
-.menu-item{
+.menu-item {
   margin-right: 40px;
   @include last-mr-0
 }
-.button-wrap{
+
+.button-wrap {
   width: 100%;
   display: flex;
   justify-content: center;
-  .button{
+
+  .button {
     min-width: 356px;
   }
 
 }
 
-.button{
+.button {
   background: #FDBF5A;
   border-radius: 70px;
   box-shadow: none;
@@ -180,41 +186,45 @@
   font-size: 25px;
   padding-left: 40px;
   padding-right: 40px;
-  &:hover{
+
+  &:hover {
     background: #FDBF5A;
 
   }
 }
 
-.main{
+.main {
   position: relative;
   height: calc(100vh - 103px);
 }
 
-.select{
+.select {
   width: 100%;
   margin-bottom: 15px;
 }
 
-.formControl{
+.formControl {
   width: 100%;
-  .MuiInput-underline:before{
+
+  .MuiInput-underline:before {
     border-bottom: 1px solid #E0E0E0;
 
   }
-  &:last-child{
-    .MuiInput-underline:before{
+
+  &:last-child {
+    .MuiInput-underline:before {
       border-bottom: none;
     }
   }
 }
-.selects{
+
+.selects {
   padding: 20px 20px 0 20px;
   border-bottom: 1px solid #E0E0E0;
   margin-bottom: 50px;
 }
 
-.map-container{
+.map-container {
   position: absolute;
   width: 100%;
   height: calc(100vh - 103px);
@@ -224,16 +234,17 @@
   left: 0;
 
 }
-.mapboxgl-ctrl-attrib-button{
+
+.mapboxgl-ctrl-attrib-button {
   display: none;
 }
 
-.message-error{
+.message-error {
   font-size: 14px;
   color: red;
 }
 
-.map{
+.map {
   @include background-cover('map.jpg')
   position: absolute;
   width: 100%;
@@ -244,7 +255,7 @@
   left: 0;
 }
 
-.profile-block{
+.profile-block {
   background: #FFFFFF;
   position: absolute;
   z-index: 1000;
@@ -255,51 +266,58 @@
   padding: 59px 44px 40px;
 }
 
-.profile-block__top{
+.profile-block__top {
   text-align: center;
   margin-bottom: 50px;
 }
-.profile-subtitle{
+
+.profile-subtitle {
   font-size: 18px;
   color: #7B7B7B;
   margin-top: -25px;
 }
-.profile-block__wrap{
+
+.profile-block__wrap {
   display: flex;
   justify-content: space-between;
 
 }
+
 .profile-block__left,
-.profile-block__right{
+.profile-block__right {
   @include width-flex(calc(50% - 50px))
 }
-.inputs-parts{
+
+.inputs-parts {
   display: flex;
   justify-content: space-between;
 }
-.inputs-part{
+
+.inputs-part {
   @include width-flex(calc(50% - 17px))
 
 }
-.card{
+
+.card {
   width: 100%;
   padding: 18px 16px 16px 28px;
 }
 
 .card-top,
-.card-bottom{
+.card-bottom {
   display: flex;
   justify-content: space-between;
 }
-.card-top{
+
+.card-top {
   margin-bottom: 28px;
 }
-.card-number{
+
+.card-number {
   margin-bottom: 34px;
   font-size: 21px;
   min-height: 30px;
 }
 
 
-
-@import 'media';
+//@import 'media';

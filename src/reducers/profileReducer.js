@@ -4,9 +4,9 @@ import {GET_LOGGED_OUT} from "../actions/authAction";
 export const initialState = {
     nameUser: localStorage.getItem('nameUser'),
     numberCard: localStorage.getItem('numberCard'),
-    expiryDate:localStorage.getItem('expiryDate'),
-    cvc:localStorage.getItem('cvc'),
-    token:localStorage.getItem('token')
+    expiryDate: localStorage.getItem('expiryDate'),
+    cvc: localStorage.getItem('cvc'),
+    token: localStorage.getItem('token')
 }
 
 export default function profileReducer(state = initialState, action) {

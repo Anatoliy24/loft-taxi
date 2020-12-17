@@ -1,24 +1,18 @@
 import React, {useState} from 'react';
-
 import {Select, Button, Paper, MenuItem, InputLabel, FormControl} from '@material-ui/core';
 import {useDispatch, useSelector} from "react-redux";
 import {FETCH_ADDRESS_REQUEST, fetchRoutingRequest} from "../actions/routeAction";
-
 
 function SelectForm() {
     const [addressFrom, setAddressFrom] = useState('');
     const [addressTo, setAddressTo] = useState('');
     const [openFrom, setOpenFrom] = useState(false);
     const [openTo, setOpenTo] = useState(false);
-
     const dispatch = useDispatch();
-    const addressListArray = useSelector((state) => state.addressList.addressItems )
-
-
+    const addressListArray = useSelector((state) => state.addressList.addressItems)
 
     const handleChangeFrom = (event) => {
-         setAddressFrom(event.target.value);
-
+        setAddressFrom(event.target.value);
     };
 
     const handleChangeTo = (event) => {
@@ -36,22 +30,15 @@ function SelectForm() {
     const handleOpenFrom = () => {
         setOpenFrom(true);
         dispatch({type: FETCH_ADDRESS_REQUEST})
-
-
     };
     const handleOpenTo = () => {
         setOpenTo(true);
         dispatch({type: FETCH_ADDRESS_REQUEST})
-
     };
     const addRouting = (e) => {
         e.preventDefault();
         dispatch(fetchRoutingRequest({addressFrom, addressTo}))
-
-
     };
-
-
 
 
     return (
@@ -73,12 +60,9 @@ function SelectForm() {
                             onChange={handleChangeFrom}
                             className='select'
                         >
-                            {addressListArray.filter((addressFrom) => addressFrom !== addressTo
-                            ).map((addressFrom, index) => (
+                            {addressListArray.filter((addressFrom) => addressFrom !== addressTo).map((addressFrom, index) => (
                                 <MenuItem value={addressFrom} key={index}>{addressFrom}</MenuItem>
-                            ))
-                            }
-
+                            ))}
                         </Select>
                     </FormControl>
                     <FormControl className='formControl'>
@@ -94,11 +78,9 @@ function SelectForm() {
                             className='select'
                         >
 
-                            {addressListArray.filter((addressTo) => addressTo !== addressFrom
-                            ).map((addressTo, index) => (
+                            {addressListArray.filter((addressTo) => addressTo !== addressFrom).map((addressTo, index) => (
                                 <MenuItem value={addressTo} key={index}>{addressTo}</MenuItem>
-                                ))
-                            }
+                            ))}
 
                         </Select>
                     </FormControl>

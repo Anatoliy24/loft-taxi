@@ -10,15 +10,11 @@ mapboxgl.accessToken =
 
 const Map = () => {
     const mapContainerRef = useRef(null);
-
     const [lng, setLng] = useState(30.315868);
     const [lat, setLat] = useState(59.939095);
     const [zoom, setZoom] = useState(15);
-
-
     const coordinates = useSelector((state) => state.routingMap.coordinates)
     const mapRoute = useRef()
-
 
     // Initialize map when component mounts
     useEffect(() => {
@@ -36,16 +32,12 @@ const Map = () => {
 
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-    console.log('mapContainerRef', mapContainerRef)
-    //
     useEffect(() => {
-        console.log('coordinatesArray.length', coordinates.length)
         if (coordinates.length !== 0 ) {
            drawRoute(mapRoute.current, coordinates)
         }
 
     }, [coordinates]);
-
 
     return (
         <div>
@@ -54,7 +46,5 @@ const Map = () => {
     );
 
 };
-
-
 
 export default Map;

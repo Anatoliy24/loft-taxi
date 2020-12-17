@@ -1,4 +1,4 @@
-import { FETCH_ROUTING_SUCCESS} from "../actions/routeAction";
+import {FETCH_ROUTING_SUCCESS} from "../actions/routeAction";
 
 export const initialState = {
     coordinates: []
@@ -7,9 +7,7 @@ export const initialState = {
 export default function routingReducer(state = initialState, action) {
     const reducers = {
         [FETCH_ROUTING_SUCCESS]: (payload) => {
-            return  {...state, coordinates:payload}
-            console.log('payload routing', payload)
-
+            return {...state, coordinates: payload}
         },
     }
     if (reducers[action.type]) {
