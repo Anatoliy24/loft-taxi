@@ -257,6 +257,13 @@
   font-size: 14px;
   color: red;
 }
+.message-error--form{
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+  color: red;
+}
+
 
 .map {
   @include background-cover('map.jpg')

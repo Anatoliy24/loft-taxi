@@ -1,6 +1,6 @@
 import {call, put, takeLatest} from "redux-saga/effects";
 import * as api from "../api";
-import {FETCH_REG_REQUEST} from "../actions/authAction";
+import {FETCH_REG_REQUEST, fetchRegFailure, fetchRegSuccess} from "../actions/authAction";
 
 
 function* handleRegSaga(action) {
@@ -13,10 +13,11 @@ function* handleRegSaga(action) {
 
     try {
         const response = yield call(api.registration, dataReg);
-        alert('Регистрация успешно выполнена')
+        yield put(fetchRegSuccess())
 
     } catch (error) {
         console.log(error)
+        yield put(fetchRegFailure())
     }
 }
 

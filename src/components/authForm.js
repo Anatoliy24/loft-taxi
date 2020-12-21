@@ -15,6 +15,7 @@ AuthForm.propTypes = {
 function AuthForm() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const messageError = useSelector((state) => state.auth.messageError)
     const { register, handleSubmit, errors } = useForm();
     const dispatch = useDispatch();
     const onSubmit = (e) => {
@@ -55,8 +56,11 @@ function AuthForm() {
 
                         />
                         {errors.loginPassword && <span className='message-error'>Вы ввели неверный пароль</span>}
+
                         <a href="#" className='link link-gray'>Забыли пароль?</a>
+
                     </div>
+
 
                 </div>
                 <Button
@@ -69,6 +73,12 @@ function AuthForm() {
                 >
                     Войти
                 </Button>
+                {messageError
+                    ?
+                    <div className="message-error--form">Вы ввели некорректный e-mail или пароль</div>
+                    :
+                    null
+                }
                 <div className="links">
                     <a href="#" className='link link-gray'>Новый пользователь? </a>
                     <Link className='link link-yellow' to='/reg'>Регистрация</Link>

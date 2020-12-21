@@ -50,6 +50,11 @@ function SelectForm() {
 
     }, [coordinates]);
 
+    const goNewOrder = () => {
+        setShowForm(true)
+        setAddressFrom('')
+        setAddressTo('')
+    }
 
     return (
         <>
@@ -131,8 +136,7 @@ function SelectForm() {
                         fullWidth={true}
                         className='button'
                         type='button'
-                        onClick={() => setShowForm(true)}
-
+                        onClick={goNewOrder}
                     >
                         Сделать новый заказ
 
