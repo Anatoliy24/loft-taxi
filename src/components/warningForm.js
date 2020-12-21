@@ -1,5 +1,5 @@
 import React from 'react';
-import {Paper} from '@material-ui/core';
+import {Button, Paper} from '@material-ui/core';
 import {Link} from "react-router-dom";
 
 
@@ -10,7 +10,15 @@ function WarningForm() {
             className="form-info"
         >
             <p className='info-text'>Пожалуйста, заполните данные профиля</p>
-            <Link className='link' to='/profile'>Заполнить</Link>
+            <Button
+                variant="contained"
+                fullWidth={true}
+                className='button'
+                type='button'
+            >
+                <Link className='link-button' to='/profile'>Заполнить</Link>
+
+            </Button>
         </Paper>
     );
 }

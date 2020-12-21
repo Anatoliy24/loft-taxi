@@ -2,6 +2,7 @@ import {call, put, takeLatest} from "redux-saga/effects";
 import * as api from "../api";
 import {FETCH_REG_REQUEST} from "../actions/authAction";
 
+
 function* handleRegSaga(action) {
     const dataReg = {
         email: action.payload.email,

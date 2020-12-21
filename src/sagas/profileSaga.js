@@ -3,11 +3,13 @@ import * as api from "../api"
 import {PROFILE_DATA_SAVE} from "../actions/profileAction";
 
 
+
 function* handleSaveProfileSaga(action) {
     try {
         const response = yield call(api.saveProfile, action.payload);
     } catch (error) {
         console.log(error)
+        alert('Регистрация НЕ успешно выполнена')
     }
 }
 
