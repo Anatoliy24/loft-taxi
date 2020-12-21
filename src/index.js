@@ -7,21 +7,12 @@ import {Provider} from 'react-redux'
 import store from './store'
 
 
-
-// import {getPersistor, getStore} from './store'
-
-
-// const store = getStore()
-// const myPersistor = getPersistor()
-
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
-            {/*<PersistGate loading={null} persistor={myPersistor}>*/}
                 <BrowserRouter>
                     <App/>
                 </BrowserRouter>
-            {/*</PersistGate>*/}
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')

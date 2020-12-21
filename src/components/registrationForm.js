@@ -3,7 +3,7 @@ import {Typography, Button, Paper} from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types'
 import {Link} from "react-router-dom";
-import {fetchRegRequest} from "../actions/actionAuth";
+import {fetchRegRequest} from "../actions/authAction";
 import {useDispatch} from "react-redux";
 
 RegistrationForm.propTypes ={
@@ -29,7 +29,7 @@ function RegistrationForm(props) {
             className="form-block"
         >
             <Typography variant="h4" className='form-title'>Регистрация</Typography>
-            <form onSubmit={onSubmit} noValidate autoComplete="osdfsdff" className='form'>
+            <form onSubmit={onSubmit} noValidate className='form'>
                 <div className="inputs">
                     <div className="input-wrap">
                         <TextField

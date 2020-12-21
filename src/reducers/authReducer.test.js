@@ -1,6 +1,6 @@
 import React from 'react';
-import {FETCH_AUTH_FAILURE, FETCH_AUTH_REQUEST, FETCH_AUTH_SUCCESS, GET_LOGGED_OUT} from "../actions/actionAuth";
-import authReducer, {initialState} from "./reducerAuth";
+import {FETCH_AUTH_FAILURE, FETCH_AUTH_REQUEST, FETCH_AUTH_SUCCESS, GET_LOGGED_OUT} from "../actions/authAction";
+import authReducer, {initialState} from "./authReducer";
 
 
 describe('authorization', () => {

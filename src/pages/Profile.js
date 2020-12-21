@@ -1,30 +1,35 @@
 import React, {useState} from 'react';
-import {Typography, Button, Paper} from '@material-ui/core';
-import TextField from "@material-ui/core/TextField";
+import {Typography, Button, Paper, TextField} from '@material-ui/core';
+import InputMask from 'react-input-mask';
 import LogoCard from "../components/svg/logoCard";
 import IdCard from "../components/svg/idCard";
 import LabelCard from "../components/svg/labelCard";
-import {PROFILE_DATA_SAVE} from "../actions/actionProfile";
+import {PROFILE_DATA_SAVE} from "../actions/profileAction";
 import {useDispatch, useSelector} from 'react-redux'
-
 
 
 function Profile() {
     const dispatch = useDispatch();
-    const profile = useSelector((state) => state.profile )
-
+    const profile = useSelector((state) => state.profile)
+    const token = useSelector((state) => state.auth.token)
     const [nameUser, setNameUser] = useState(profile.nameUser)
     const [numberCard, setNumberCard] = useState(profile.numberCard)
-    const [dateCard, setDateCard] = useState(profile.dateCard)
+    const [expiryDate, setExpiryDate] = useState(profile.expiryDate)
     const [cvc, setCvc] = useState(profile.cvc)
 
-    const onSubmitSaveData = (e) =>{
+    const onSubmitSaveData = (e) => {
         e.preventDefault();
-        localStorage.setItem('nameUser', profile.nameUser);
-        localStorage.setItem('numberCard', profile.numberCard);
-        localStorage.setItem('dateCard', profile.dateCard);
-        localStorage.setItem('cvc', profile.cvc);
-        dispatch({type: PROFILE_DATA_SAVE, payload:{nameUser:nameUser, numberCard:numberCard, dateCard:dateCard, cvc:cvc}})
+        dispatch({
+            type: PROFILE_DATA_SAVE,
+            payload: {nameUser: nameUser, numberCard: numberCard, expiryDate: expiryDate, cvc: cvc, token}
+        })
+
+        localStorage.setItem('nameUser', nameUser);
+        localStorage.setItem('numberCard', numberCard);
+        localStorage.setItem('expiryDate', expiryDate);
+        localStorage.setItem('cvc', cvc);
+        localStorage.setItem('token', token);
+
 
     }
 
@@ -66,24 +71,35 @@ function Profile() {
                                 <div className="inputs-parts">
                                     <div className="inputs-part">
                                         <div className="input-wrap">
-                                            <TextField
-                                                id="standard-basic"
-                                                label="MM/YY"
-                                                className='input'
-                                                value={dateCard}
-                                                onChange={(e) => setDateCard(e.target.value)}
-                                            />
+                                            <InputMask
+                                                mask="99/99"
+                                                onChange={(e) => setExpiryDate(e.target.value)}
+                                                value={expiryDate}
+
+                                            >
+                                                {() => <TextField
+                                                    id="standard-basic"
+                                                    label="MM/YY"
+                                                    className='input'
+                                                />}
+                                            </InputMask>
                                         </div>
                                     </div>
                                     <div className="inputs-part">
                                         <div className="input-wrap">
-                                            <TextField
-                                                id="standard-basic"
-                                                label="CVC"
-                                                className='input'
+                                            <InputMask
+                                                mask="999"
+                                                type='number'
                                                 value={cvc}
                                                 onChange={(e) => setCvc(e.target.value)}
-                                            />
+                                            >
+                                                {() => <TextField
+                                                    id="standard-basic"
+                                                    label="CVC"
+                                                    className='input'
+                                                />}
+                                            </InputMask>
+
                                         </div>
                                     </div>
                                 </div>
@@ -96,7 +112,7 @@ function Profile() {
                             >
                                 <div className="card-top">
                                     <LogoCard/>
-                                    <div className="card-date">{dateCard}</div>
+                                    <div className="card-date">{expiryDate}</div>
                                 </div>
                                 <div className="card-number">{numberCard}</div>
                                 <div className="card-bottom">
