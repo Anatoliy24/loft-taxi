@@ -27,7 +27,7 @@ function RegistrationForm(props) {
     const onSubmit = () => {
         console.log('messageError', messageError)
         if (messageError !== false) {
-            history.push("/login");
+            history.push("/");
         }
         dispatch(fetchRegRequest({email, password, name, surName}))
 
@@ -117,7 +117,7 @@ function RegistrationForm(props) {
 
                 <div className="links">
                     <a href="#" className='link link-gray'>Уже зарегестрированны? </a>
-                    <Link className='link link-yellow' to='/login'>Войти</Link>
+                    <Link className='link link-yellow' to='/'>Войти</Link>
                 </div>
             </form>
         </Paper>
