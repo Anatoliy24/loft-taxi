@@ -37,10 +37,17 @@
 
 .info-text {
   font-size: 28px;
-
+  margin-bottom: 60px;
 }
-
-
+.info-text_small{
+  font-size: 18px;
+}
+.info-text__wrap{
+  margin-bottom: 60px;
+  .info-text {
+    margin-bottom: 15px;
+  }
+}
 .login-page {
   height: 100vh;
   display: flex;
@@ -116,7 +123,10 @@
   margin-top: 33px;
   text-align: center;
 }
-
+.link-button{
+  text-decoration: none;
+  color: #000;
+}
 
 .input-wrap {
   position: relative;
@@ -134,6 +144,7 @@
     left: auto;
   }
 }
+
 
 
 .header {
@@ -240,9 +251,19 @@
 }
 
 .message-error {
+  position: absolute;
+  left: 0;
+  top: 52px;
   font-size: 14px;
   color: red;
 }
+.message-error--form{
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+  color: red;
+}
+
 
 .map {
   @include background-cover('map.jpg')
@@ -318,6 +339,5 @@
   font-size: 21px;
   min-height: 30px;
 }
-
 
 //@import 'media';

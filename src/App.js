@@ -24,7 +24,7 @@ function App() {
             if (isLoggedIn) {
                 history.push("/main");
             } else {
-                history.push("/login");
+                history.push("/");
             }
         }
 
@@ -41,7 +41,7 @@ function App() {
             )}
 
             <Switch>
-                <Route exact path='/login' component={Login}/>
+                <Route exact path='/' component={Login}/>
                 <Route exact path='/reg' component={Registration}/>
 
                 <PrivateRouter

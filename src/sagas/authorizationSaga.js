@@ -1,5 +1,5 @@
 import {takeLatest, call, put} from 'redux-saga/effects'
-import {FETCH_AUTH_REQUEST, FETCH_AUTH_SUCCESS, fetchAuthFailure, fetchAuthSuccess} from "../actions/authAction";
+import {FETCH_AUTH_REQUEST, FETCH_AUTH_SUCCESS, fetchAuthFailure} from "../actions/authAction";
 import * as api from "../api"
 
 
